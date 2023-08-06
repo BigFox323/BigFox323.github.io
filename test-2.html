@@ -4,20 +4,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>test-2 Blog</title>
+    <title>Test-2 Blog</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script defer>
+        window.onload = function () {
+            fetch('./fox-1.md')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Failed to fetch markdown");
+                    }
+                    return response.text();
+                })
+                .then(text => {
+                    const mainTitleMatch = text.match(/^##\s+(.+)$/m);
+                    const subTitleMatch = text.match(/^###\s+(.+)$/m);
+                    const introMatch = text.match(/\n\n[ \t]{4}(.+)$/m);
+
+                    const mainTitle = mainTitleMatch ? mainTitleMatch[1] : '';
+                    const subTitle = subTitleMatch ? subTitleMatch[1] : '';
+                    const intro = introMatch ? introMatch[1] : '';
+
+                    document.querySelector('article h1').innerHTML = mainTitle;
+                    document.querySelector('article h2').innerHTML = subTitle;
+                    document.querySelector('article p').innerHTML = intro.length > 50 ? intro.substr(0, 50) + '...' : intro;
+
+                    document.querySelector('article h1').addEventListener('click', () => {
+                        window.location.href = "blog-content.html";
+                    });
+
+                    document.querySelector('article h2').addEventListener('click', () => {
+                        window.location.href = "blog-content.html";
+                    });
+
+                    document.querySelector('article p').addEventListener('click', () => {
+                        window.location.href = "blog-content.html";
+                    });
+                })
+                .catch(error => {
+                    console.error("Error fetching or parsing the markdown:", error);
+                });
+        };
+    </script>
+
+
 </head>
 
 <body>
     <header class="header">
         <h1 class="logo">
-            <a href="#" class="logo-item">BigFox Blog</a>
+            <a href="./index.html" class="logo-item">BigFox Blog</a>
         </h1>
         <nav class="navbar">
             <ul>
-                <a href="#" class="nav-item">首页</a>
-                <a href="#" class="nav-item">文章</a>
-                <a href="#" class="nav-item">关于</a>
+                <a href="./index.html" class="nav-item">首页</a>
+                <a href="./blog.html" class="nav-item">文章</a>
+                <a href="./index.html" class="nav-item">关于</a>
             </ul>
         </nav>
     </header>
@@ -30,35 +73,22 @@
                 <p>前端工程师 | 网络技术爱好者 | 谷歌粉丝</p>
                 <ul>
                     <li>Email: BigFox@gmail.com</li>
-                    <li>GitHub: github.com/BigFox</li>
+                    <li>GitHub: github.com/BigFox323</li>
                     <li>Twitter: @BigFox</li>
                 </ul>
             </section>
         </aside>
 
         <section>
-            <!-- 以下是一个文章模板 -->
             <article>
-                <h1>文章标题</h1>
-                <p>文章简介...</p>
-            </article>
-
-            <article>
-                <h1>谷歌发布新一代智能手机</h1>
-                <p>谷歌在最新发布会上推出了新一代智能手机，搭载了最新的处理器和操作系统...</p>
-            </article>
-
-            <article>
-                <h1>人工智能技术的最新进展</h1>
-                <p>人工智能技术近年来取得了令人瞩目的进展，从语音识别到图像处理，都取得了重大突破...</p>
-            </article>
-
-            <article>
-                <h1>LK99的最新进展</h1>
-                <p>人工智能技术近年来取得了令人瞩目的进展，从语音识别到图像处理，都取得了重大突破...</p>
+                <h1></h1>
+                <h2></h2>
+                <p></p>
             </article>
         </section>
     </main>
+
+    <div id="content"></div>
 
     <footer class="footer">
         <p>&copy; 2023 BigFox Blog</p>
@@ -67,9 +97,12 @@
 
 </html>
 
-
-
 <style>
+    #content {
+        width: 100%;
+        height: 500px;
+    }
+
     * {
         margin: 0;
         padding: 0;
@@ -104,6 +137,10 @@
 
     .logo-item:hover {
         color: #ddd;
+    }
+
+    .logo-item,
+    .nav-item {
         transition: color 0.2s;
     }
 
@@ -119,7 +156,6 @@
 
     .nav-item:hover {
         color: #ddd;
-        transition: color 0.2s;
     }
 
     main {
@@ -163,11 +199,17 @@
     article h1 {
         margin-bottom: 20px;
         font-weight: bold;
+        font-size: 1.8em;
+    }
+
+    article h2 {
+        margin-bottom: 20px;
+        font-weight: bold;
+        font-size: 1.2em;
     }
 
     article:not(:last-child) {
         margin-bottom: 30px;
-        /* 增大了间隔 */
     }
 
     .footer {

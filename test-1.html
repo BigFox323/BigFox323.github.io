@@ -4,20 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>test-1 Blog</title>
+    <title>Test-1 Blog</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 
 <body>
     <header class="header">
         <h1 class="logo">
-            <a href="#" class="logo-item">BigFox Blog</a>
+            <a href="./index.html" class="logo-item">BigFox Blog</a>
         </h1>
         <nav class="navbar">
             <ul>
-                <a href="#" class="nav-item">首页</a>
-                <a href="#" class="nav-item">文章</a>
-                <a href="#" class="nav-item">关于</a>
+                <a href="./index.html" class="nav-item">首页</a>
+                <a href="./blog.html" class="nav-item">文章</a>
+                <a href="./index.html" class="nav-item">关于</a>
             </ul>
         </nav>
     </header>
@@ -26,7 +26,7 @@
             <h2 class="time" id="time"></h2>
             <h2 class="article-title" id="article-title"></h2>
             <p class="article-content" id="article-content"></p>
-            <a href="#" class="in-button">进入森林</a>
+            <a href="./blog.html" class="in-button">进入森林</a>
         </article>
     </main>
 
@@ -36,7 +36,6 @@
 </body>
 
 </html>
-
 
 <script>
     let isPrintingTime = false; // 新增标志来检查是否正在打印时间
@@ -129,9 +128,13 @@
         text-decoration: none;
     }
 
+    .logo-item,
+    .nav-item {
+        transition: color 0.2s;
+    }
+
     .logo-item:hover {
         color: #ddd;
-        transition: color 0.2s;
     }
 
     .navbar {
@@ -146,7 +149,6 @@
 
     .nav-item:hover {
         color: #ddd;
-        transition: color 0.2s;
     }
 
     .container {

@@ -5,7 +5,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BigFox Blog</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script defer>
+        window.onload = function () {
+            fetch('./fox-1.md')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Failed to fetch markdown");
+                    }
+                    return response.text();
+                })
+                .then(text => {
+                    const mainTitleMatch = text.match(/^##\s+(.+)$/m);
+                    const subTitleMatch = text.match(/^###\s+(.+)$/m);
+
+                    const mainTitle = mainTitleMatch ? mainTitleMatch[1] : '';
+                    const subTitle = subTitleMatch ? subTitleMatch[1] : '';
+
+                    document.querySelector('article h1').innerHTML = mainTitle;
+                    document.querySelector('article h2').innerHTML = subTitle;
+
+                    document.querySelector('article h1').addEventListener('click', () => {
+                        window.location.href = "blog-content.html";
+                    });
+
+                    document.querySelector('article h2').addEventListener('click', () => {
+                        window.location.href = "blog-content.html";
+                    });
+
+                })
+                .catch(error => {
+                    console.error("Error fetching or parsing the markdown:", error);
+                });
+        };
+    </script>
+
+
 </head>
 
 <body>
@@ -27,37 +66,37 @@
             <section>
                 <img src="profile.png" alt="个人头像">
                 <h2>BigFox</h2>
-                <p>前端工程师 | 网络技术爱好者 | 谷歌粉丝</p>
+                <p>前端小白 | 网络技术爱好者 | 超级黑客幻想者</p>
                 <ul>
-                    <li>Email: BigFox@gmail.com</li>
-                    <li>GitHub: github.com/BigFox</li>
-                    <li>Twitter: @BigFox</li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/BigFox323" target="_blank">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">
+                            <i class="fab fa-twitter"></i> Twitter
+                        </a>
+                    </li>
                 </ul>
+
             </section>
         </aside>
 
         <section>
-            <!-- 以下是一个文章模板 -->
             <article>
-                <h1>文章标题</h1>
-                <p>文章简介...</p>
+                <h1>标题1</h1>
+                <h2>标题2</h2>
+                <a href="blog-content.html" class="read-more">阅读更多</a>
             </article>
 
-            <article>
-                <h1>谷歌发布新一代智能手机</h1>
-                <p>谷歌在最新发布会上推出了新一代智能手机，搭载了最新的处理器和操作系统...</p>
-            </article>
-
-            <article>
-                <h1>人工智能技术的最新进展</h1>
-                <p>人工智能技术近年来取得了令人瞩目的进展，从语音识别到图像处理，都取得了重大突破...</p>
-            </article>
-
-            <article>
-                <h1>LK99的最新进展</h1>
-                <p>人工智能技术近年来取得了令人瞩目的进展，从语音识别到图像处理，都取得了重大突破...</p>
-            </article>
         </section>
+
     </main>
 
     <footer class="footer">
@@ -66,8 +105,6 @@
 </body>
 
 </html>
-
-
 
 <style>
     * {
@@ -104,6 +141,10 @@
 
     .logo-item:hover {
         color: #ddd;
+    }
+
+    .logo-item,
+    .nav-item {
         transition: color 0.2s;
     }
 
@@ -119,7 +160,6 @@
 
     .nav-item:hover {
         color: #ddd;
-        transition: color 0.2s;
     }
 
     main {
@@ -129,6 +169,26 @@
         max-width: 1200px;
         margin: 20px auto;
         padding: 20px;
+    }
+
+    article {
+        position: relative;
+        /* 这样子元素可以相对于它进行绝对定位 */
+        /* 其他样式保持不变 */
+    }
+
+    .read-more {
+        display: block;
+        position: absolute;
+        bottom: 20px;
+        right: 30px;
+        color: #333;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .read-more:hover {
+        color: #888;
     }
 
     aside,
@@ -163,11 +223,31 @@
     article h1 {
         margin-bottom: 20px;
         font-weight: bold;
+        font-size: 1.8em;
+    }
+
+    ul li {
+        margin-bottom: 8px;
+    }
+
+    ul li a {
+        text-decoration: none;
+        color: #888;
+    }
+
+    ul li a:hover {
+        color: #333;
+    }
+
+
+    article h2 {
+        margin-bottom: 20px;
+        font-weight: bold;
+        font-size: 1.2em;
     }
 
     article:not(:last-child) {
         margin-bottom: 30px;
-        /* 增大了间隔 */
     }
 
     .footer {
