@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test-1 Blog</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="logo">
+            <a href="#" class="logo-item">BigFox Blog</a>
+        </h1>
+        <nav class="navbar">
+            <ul>
+                <a href="#" class="nav-item">首页</a>
+                <a href="#" class="nav-item">文章</a>
+                <a href="#" class="nav-item">关于</a>
+            </ul>
+        </nav>
+    </header>
+    <main class="container">
+        <article>
+            <h2 class="time" id="time"></h2>
+            <h2 class="article-title" id="article-title"></h2>
+            <p class="article-content" id="article-content"></p>
+            <a href="#" class="in-button">进入森林</a>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2023 BigFox Blog</p>
+    </footer>
+</body>
+
+</html>
+
+
+<script>
+    let isPrintingTime = false; // 新增标志来检查是否正在打印时间
+
+    const printText = (text, elementId, delay) => {
+        if (elementId === 'time') {
+            isPrintingTime = true;
+        }
+
+        let i = 0;
+        const targetElement = document.getElementById(elementId);
+        targetElement.innerHTML = ''; // 清空目标元素的内容
+
+        const print = () => {
+            if (i < text.length) {
+                const char = text.charAt(i);
+                targetElement.innerHTML += char === '\n' ? '<br>' : char;
+                i++;
+                setTimeout(print, delay);
+            } else {
+                if (elementId === 'time') {
+                    isPrintingTime = false;
+                }
+            }
+        };
+        print();
+    };
+
+    const updateCurrentTime = () => {
+        if (isPrintingTime) { // 如果还在打印，就返回
+            return;
+        }
+        let date = new Date();
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1; // getMonth() 返回的月份从 0 开始
+        let day = date.getDate();
+        let hours = date.getHours();
+        let minutes = date.getMinutes();
+        let seconds = date.getSeconds();
+        if (month < 10) { month = '0' + month; }
+        if (day < 10) { day = '0' + day; }
+        if (hours < 10) { hours = '0' + hours; }
+        if (minutes < 10) { minutes = '0' + minutes; }
+        if (seconds < 10) { seconds = '0' + seconds; }
+        let currentTime = year + '年' + month + '月' + day + '日 ' + hours + ':' + minutes + ':' + seconds;
+        printText(currentTime, 'time', 70);
+    }
+
+    updateCurrentTime(); // 立即显示当前时间
+    setInterval(updateCurrentTime, 1000 * 60); // 每分钟更新一次时间
+
+    printText('欢迎来到大狐狸的森林！', 'article-title', 120);
+    printText('这片神秘而繁茂的森林，\n居住着一只狡黠聪明的大狐狸，\n寻找未知的奥秘，探索生命的故事。\n这是它的森林，它邀请你一起来探索、分享它的世界...', 'article-content', 50);
+
+
+
+</script>
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Microsoft YaHei', Arial, sans-serif;
+        background-color: #f8f8f8;
+        margin: 0;
+        padding: 0;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        background-color: #f2f2f2;
+        padding: 10px 30px;
+    }
+
+    .logo {
+        color: #888;
+        font-size: 24px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .logo-item {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .logo-item:hover {
+        color: #ddd;
+        transition: color 0.2s;
+    }
+
+    .navbar {
+        display: flex;
+    }
+
+    .nav-item {
+        color: #888;
+        padding: 0 18px;
+        text-decoration: none;
+    }
+
+    .nav-item:hover {
+        color: #ddd;
+        transition: color 0.2s;
+    }
+
+    .container {
+        padding: 50px 120px;
+    }
+
+    .article-title {
+        font-size: 1.8em;
+        color: #333;
+        margin-top: 40px;
+    }
+
+    .time {
+        font-size: 1.8em;
+        color: #333;
+        margin-top: 20px;
+    }
+
+    .article-content {
+        font-size: 1.2em;
+        color: #666;
+        line-height: 40px;
+        margin-top: 50px;
+    }
+
+    .in-button {
+        display: inline-block;
+        color: #fff;
+        background-color: olivedrab;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 3px;
+        margin-top: 50px;
+        transition: background-color 0.3s;
+    }
+
+    .in-button:hover {
+        background-color: darkolivegreen;
+    }
+
+    .footer {
+        text-align: center;
+        background-color: #f2f2f2;
+        padding: 10px;
+        color: #888;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    /* Responsive Styles for Mobile */
+    @media (max-width: 768px) {
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* Add this to vertically center the logo and navbar */
+            background-color: #f2f2f2;
+            padding: 10px 20px;
+            /* Reduced padding to save horizontal space */
+        }
+
+        .logo {
+            color: #888;
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo-item {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            /* Ensure nav items are centered vertically */
+        }
+
+        .nav-item {
+            color: #888;
+            padding: 5px 10px;
+            /* Adjusted padding for a more balanced appearance */
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .container {
+            padding: 30px 20px;
+        }
+
+        .article-title,
+        .time {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+
+        .article-content {
+            font-size: 1em;
+        }
+
+        .in-button {
+            display: inline-block;
+            color: #fff;
+            font-size: em;
+            background-color: olivedrab;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 3px;
+            margin-top: 50px;
+        }
+
+        .footer {
+            text-align: center;
+            background-color: #f2f2f2;
+            font-size: 0.9em;
+            padding: 10px;
+            color: #888;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    }
+</style>
