@@ -26,32 +26,32 @@
 
 
 <body>
-    <header class="header">
-        <h1 class="logo">
-            <a href="./index.html" class="logo-item">BigFox Blog</a>
-        </h1>
-        <nav class="navbar">
-            <ul>
-                <a href="./index.html" class="nav-item">首页</a>
-                <a href="./blog.html" class="nav-item">文章</a>
-                <a href="./index.html" class="nav-item">关于</a>
-            </ul>
-        </nav>
-    </header>
+    <div class="page-container">
+        <header class="header">
+            <h1 class="logo">
+                <a href="./index.html" class="logo-item">BigFox Blog</a>
+            </h1>
+            <nav class="navbar">
+                <ul>
+                    <a href="./index.html" class="nav-item">首页</a>
+                    <a href="./blog.html" class="nav-item">文章</a>
+                    <a href="./index.html" class="nav-item">关于</a>
+                </ul>
+            </nav>
+        </header>
 
-    <main>
-        <section id="content">
-        </section>
-    </main>
+        <main>
+            <section id="content">
+            </section>
+        </main>
 
-    <footer class="footer">
-        <p>&copy; 2023 BigFox Blog</p>
-    </footer>
+        <footer class="footer">
+            <p>&copy; 2023 BigFox Blog</p>
+        </footer>
+    </div>
 </body>
 
 </html>
-
-
 
 <style>
     * {
@@ -60,11 +60,20 @@
         box-sizing: border-box;
     }
 
-    body {
-        font-family: 'Microsoft YaHei', Arial, sans-serif;
+    body,
+    html {
+        height: 100%;
+        font-family: "微软雅黑", "PingFang SC", "Source Han Sans CN", "Noto Sans CJK SC", sans-serif;
         background-color: #f8f8f8;
         margin: 0;
         padding: 0;
+    }
+
+    .page-container {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     .header {
@@ -110,12 +119,13 @@
     }
 
     main {
+        flex: 1;
         display: grid;
         grid-template-columns: 100%;
         gap: 25px;
         width: 80%;
         margin: 20px auto;
-        padding: 30px;
+        padding: 20px;
         background-color: #fff;
         box-shadow: var(--box-shadow-light);
         border-radius: 8px;
@@ -131,11 +141,10 @@
 
     .footer {
         text-align: center;
-        background-color: #f2f2f2;
         padding: 10px;
+        font-size: 0.9em;
         color: #888;
-        position: fixed;
-        bottom: 0;
+        background-color: #f2f2f2;
         width: 100%;
     }
 
@@ -184,8 +193,6 @@
             font-size: 0.9em;
             color: #888;
             background-color: #f2f2f2;
-            position: fixed;
-            bottom: 0;
             width: 100%;
         }
     }
