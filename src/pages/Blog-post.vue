@@ -47,6 +47,7 @@ export default {
         width: 95%;
         margin: 10px auto;
         padding: 10px;
+        overflow: hidden;
     }
 }
 </style>
