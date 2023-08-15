@@ -15,7 +15,7 @@ export default {
 
         onMounted(async () => {
             try {
-                const response = await fetch(`/src/markdown/${route.params.filename}.md`);
+                const response = await fetch(`/markdown/${route.params.filename}.md`);
                 if (response.ok) {
                     const content = await response.text();
                     postContent.value = md.render(content);
@@ -47,6 +47,7 @@ export default {
         width: 95%;
         margin: 10px auto;
         padding: 10px;
+        overflow: hidden;
     }
 }
 </style>
