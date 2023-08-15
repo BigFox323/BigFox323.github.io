@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "darkmode-js": "^1.5.7",
     "markdown-it": "^13.0.1",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4"

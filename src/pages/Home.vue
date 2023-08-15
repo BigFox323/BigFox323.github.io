@@ -1,10 +1,10 @@
 <template>
-    <div class="container">
-      <article>
-        <h2>欢迎来到大狐狸的森林！</h2>
-        <p>这片神秘而繁茂的森林，<br>居住着一只狡黠聪明的大狐狸，<br>寻找未知的奥秘，探索生命的故事。<br>这是它的森林，它邀请你一起来探索、分享它的世界...</p>
-        <router-link to="/blog" class="in-button">进入森林</router-link>
-      </article>
+  <div class="container">
+    <article>
+      <h2>欢迎来到大狐狸的森林！</h2>
+      <p>这片神秘而繁茂的森林，<br>居住着一只狡黠聪明的大狐狸，<br>寻找未知的奥秘，探索生命的故事。<br>这是它的森林，它邀请你一起来探索、分享它的世界...</p>
+      <router-link to="/blog" class="in-button">进入森林</router-link>
+    </article>
   </div>
 </template>
 
@@ -47,6 +47,15 @@ article p {
 .in-button:hover {
   background-color: darkolivegreen;
 }
+
+body.darkmode--activated .in-button {
+  background-color: #888;
+}
+
+body.darkmode--activated .in-button:hover {
+  background-color: #333;
+}
+
 
 /* Responsive Styles for Mobile */
 @media (max-width: 768px) {
