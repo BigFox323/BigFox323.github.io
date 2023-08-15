@@ -40,9 +40,9 @@ export default {
     padding: 10px;
 }
 
-.post-container ul li {
-    list-style-type: none;
-}
+.post-container /deep/ ul li {
+        list-style-type: none;
+    }
 
 @media (max-width: 768px) {
     .post-container {
@@ -52,7 +52,7 @@ export default {
         padding: 10px;
     }
 
-    .post-container ul li {
+    .post-container /deep/ ul li {
         list-style-type: none;
     }
 }
