@@ -136,7 +136,7 @@ export default {
   width: 100%;
   height: 100%;
   background-color: #ccc;
-  border-radius: 34px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   transition: background-color 0.3s, border-color 0.3s;
@@ -146,7 +146,6 @@ export default {
   content: "";
   height: 24px;
   width: 24px;
-  margin: 0 1px;
   background-color: white;
   border-radius: 50%;
   transition: transform 0.3s;
@@ -218,6 +217,20 @@ input:checked+.theme-slider .fas.fa-moon {
     font-size: 15px;
   }
 
+  .theme-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+
   .theme-switch {
     width: 40px;
     height: 20px;
@@ -227,11 +240,13 @@ input:checked+.theme-slider .fas.fa-moon {
     content: "";
     height: 20px;
     width: 20px;
-    margin: 0 1px;
+    position: absolute;
+    top: 0;
+    left: 2px;
   }
 
   input:checked+.theme-slider:before {
-    transform: translateX(15px);
+    transform: translateX(16px);
   }
 
 }
