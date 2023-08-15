@@ -38,10 +38,9 @@ export default {
     width: 80%;
     margin: 20px auto;
     padding: 10px;
-    overflow: hidden;
 }
 
-.post-container ul {
+.post-container ul li {
     list-style-type: none;
 }
 
@@ -51,10 +50,9 @@ export default {
         width: 95%;
         margin: 10px auto;
         padding: 10px;
-        overflow: hidden;
     }
 
-    .post-container ul {
+    .post-container ul li {
         list-style-type: none;
     }
 }
