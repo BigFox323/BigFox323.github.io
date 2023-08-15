@@ -167,10 +167,12 @@ input:checked+.theme-slider:before {
 .theme-slider .fas.fa-sun {
   right: 10%;
   display: none;
+  color: #708090;
 }
 
 .theme-slider .fas.fa-moon {
   left: 10%;
+  color: #FFD700;
 }
 
 input:checked+.theme-slider .fas.fa-sun {
