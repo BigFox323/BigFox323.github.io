@@ -16,11 +16,8 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;我先通过菜鸟教程学习了HTML和CSS的基础知识，一两天的时间，就能够写出一个简单的静态网页。我弟的博客给了我启示，所以我开始设计博客的布局和样式设计，各个内容页的布局，导航栏和页脚，以及配色和头像。
 
-<<<<<<<< HEAD:Bigfox-blog/fox-1.md
-========
 &nbsp;
 
->>>>>>>> b3dbf47c5f3af36e01a065af6fbf8ecff8cfe7d0:public/markdown/fox-1.md
 - **- 首页**
 - **- 内容页**
 - **- 内容页布局**
@@ -29,11 +26,8 @@
 - **- 颜色**
 - **- 头像**
 
-<<<<<<<< HEAD:Bigfox-blog/fox-1.md
-========
 &nbsp;
 
->>>>>>>> b3dbf47c5f3af36e01a065af6fbf8ecff8cfe7d0:public/markdown/fox-1.md
 当这些内容一一落实之后，一个简单的博客雏形就已经呈现出来了，而在这个过程中，ChatGPT给了我很多帮助，让我能够迅速解决遇到的问题，AI在未来的世界里一定会占据很重要的位置。
 
 &nbsp;
@@ -53,8 +47,6 @@
 
 &nbsp;
 
-<<<<<<<< HEAD:Bigfox-blog/fox-1.md
-========
 
 &nbsp;
 
@@ -62,4 +54,3 @@
 
 &nbsp;
 
->>>>>>>> b3dbf47c5f3af36e01a065af6fbf8ecff8cfe7d0:public/markdown/fox-1.md
