@@ -41,6 +41,10 @@ export default {
     overflow: hidden;
 }
 
+.post-container ul {
+    list-style-type: none;
+}
+
 @media (max-width: 768px) {
     .post-container {
         flex: 1;
@@ -48,6 +52,10 @@ export default {
         margin: 10px auto;
         padding: 10px;
         overflow: hidden;
+    }
+
+    .post-container ul {
+        list-style-type: none;
     }
 }
 </style>
