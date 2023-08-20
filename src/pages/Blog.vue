@@ -31,7 +31,7 @@ export default {
   setup() {
     const posts = ref([
       { id: 1, title: "从零开始学前端", summary: "2023年8月1日，前端小白的起点...", filename: "fox-1" },
-      { id: 2, title: "待更新", summary: "待更新...", filename: "fox-2" },
+      { id: 2, title: "从零开始学VUE", summary: "组件化网站...", filename: "fox-2" },
       { id: 3, title: "待更新", summary: "待更新...", filename: "fox-3" },
     ]);
 
